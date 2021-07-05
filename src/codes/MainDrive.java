@@ -27,10 +27,16 @@ public class MainDrive {
 		
 		Scanner myScan = new Scanner(System.in);
 		
+//		문제를 풀기 위해 몇 번 시도했는지 저장해주는 변수를 만들자
+		int tryCount = 0;
+		
 		while (true) {
 			
 			System.out.print("3자리 숫자를 입력하세요 : ");
 			int inputNum = myScan.nextInt();
+			
+//			시도 횟수 1회 증가
+			tryCount++;
 			
 //			입력받은 숫자도 3자리 배열에 나눠서 저장하자
 //			ex) 123이라는 숫자를 넣었다면 [1,2,3]으로 쪼개주자는 이야기
@@ -87,6 +93,7 @@ public class MainDrive {
 //			만약에 3S라면 정답을 맞춘 상황, 추가적인 입력을 받을 필요 없음 => while 반복문 깨고 나가서 프로그램 종료시키자
 			if(strikeCount == 3) {
 				System.out.println("축하합니다! 정답이에요~");
+				System.out.println(tryCount + "번 만에 푸셨습니다!");
 				break;
 			}
 			
