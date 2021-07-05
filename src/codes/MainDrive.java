@@ -6,62 +6,44 @@ public class MainDrive {
 	
 	public static void main(String[] args) {
 		
-//		숫자 야구 게임을 만들자
-//		긴 풀이가 될 예정이니까 단계별로 다시 복습하기 !!
-		
-//		문제로 출제된 숫자 3개를 저장할 배열을 만들자		
+
 		int[] questionNumbers = new int[3];
 		
-//		3칸의 배열에 숫자를 저장할 for문을 만들자
+
 		for(int i = 0 ; i < questionNumbers.length ; i++) {
 			
-//			1. 1에서 9의 숫자만 사용 => 1~9 중 하나를 랜덤으로 생성 (안배운 부분)
-			
-//			2. 774 등 중복된 숫자는 막아야함 => 뽑힌 랜덤 숫자가 문제 숫자 안에 들어있는 지 (=사용해도 되는지) 검사
-			
-//			3. 검사를 통과했다면 배열에 집어넣고, 아니면 다시 뽑게 만들자 => 올바른 숫자가 나올때까지 해당 자리를 다시 뽑자라는 이야기
-//			 => 몇 번을 돌려야하는지 미정... 그럴땐 while 이용한 무한 반복 사용하자
 
 			while (true) {
 				
-//				0 *9+1 = 1 < 랜덤값 *9+1 < 1 *9+1 = 10 : 0 < 랜덤값 < 10
 				
 				int randomNum = (int)(Math.random()*9+1);
 				
-//				중복인지아닌지 통과하는 여부 저장 => 일단 괜찮다고 하고, 중복값을 발견하면 안괜찮도록 변경할 예정
 				boolean isDuplOk = true;
 				
 				for(int num : questionNumbers) {
 					if (randomNum == num) {
-//						중복된 숫자를 발견했다!! => 더이상 중복검사 통과한게 X
+
 						isDuplOk = false;
 					}
 				}
 				
-//				만약 중복검사 결과가 true로 유지되어있다면 => 사용해도 좋은 랜덤값
+
 				if(isDuplOk) {
-//					해당 위치에 랜덤값을 대입해도 됨
+
 					questionNumbers[i] = randomNum;
 					
-//					다음 숫자를 뽑으러 가려면 while반복을 깨야 다음 for문 차례로 이동할 수 있음
 					break;
 				}
 				
-			}
-			
+			}		
 		
 		}
 		
+	
 
-		
-		
-//		사용자에게 3자리 숫자를 무한히 입력받기
-//		'무한히' 라는 건 몇번을 입력해야 3S가 될까?
-//		반복 횟수가 불명확한 반복이니까 무한으로 while문 활용
 		
 		Scanner myScan = new Scanner(System.in);
 		
-//		문제를 풀기 위해 몇 번 시도했는지 저장해주는 변수를 만들자
 		int tryCount = 0;
 		
 		while (true) {
@@ -69,48 +51,31 @@ public class MainDrive {
 			System.out.print("3자리 숫자를 입력하세요 : ");
 			int inputNum = myScan.nextInt();
 			
-//			시도 횟수 1회 증가
 			tryCount++;
 			
-//			입력받은 숫자도 3자리 배열에 나눠서 저장하자
-//			ex) 123이라는 숫자를 넣었다면 [1,2,3]으로 쪼개주자는 이야기
 			
 			int[] inputNumbers = new int[3];
 			
-//			0번칸 : ex) 123을 쳤다면 => 1이 들어가야함. 어떻게? 입력값 / 100 한 값 
 			inputNumbers[0] = inputNum / 100;
-//			1번칸 : ex) 123을 쳤다면 => 2가 들어가야함. 어떻게? 123 => 12 => 1의 자리
 			inputNumbers[1] = inputNum / 10 % 10;
-//			2번칸 : ex) 123을 쳤다면 => 3이 들어가야함. 어떻게? 입력값 / 10 한 값
 			inputNumbers[2] = inputNum % 10;
 			
-//			검사를 하기 전에, S / B 의 갯수를 기록할 변수를 만들자
 			int strikeCount = 0;
 			int ballCount = 0;			
 			
-//			내가 입력한 숫자는 i가 담당을 하고 ( 덜 바쁜 반복 ) 
-//			문제 숫자는 j가 담당을 한다 ( 바쁜 반복 ) => for 중첩
+
 			
 			for(int i = 0 ; i < inputNumbers.length ; i++) {
 				
 				for(int j = 0; j < questionNumbers.length ; j++) {
 					
-//					먼저 검사 : 내 숫자 == 문제의 숫자 ?  -> 배열 안에 적힌 숫자끼리 같은가?
-//					== 면 추가 검사 -> 둘의 위치도 ==?
-//					if문 중첩을 해야한다!!
-					
-//					중간 테스트
-//					System.out.println("내 숫자 : " + inputNumbers[i] + ", 문제 숫자 : " + questionNumbers[j]);
 					
 					if(inputNumbers[i] == questionNumbers[j]) {
 						
-//						추가 질문 : S / B = > 둘의 위치가 같은 가 다른가 질문해야한다 => i와 j가 같은가 다른가에 대한 질문을 해야한다는 뜻
 						if( i == j) {
-//							숫자도 같고, 위치도 같은 상황 => S 하나 발견
 							strikeCount++;
 						}
 						else {
-//							숫자는 같지만, 위치만 다른 상황 => B 하나 발견
 							ballCount++;
 						}
 						
@@ -121,10 +86,8 @@ public class MainDrive {
 				}
 			}
 			
-//			?S ?B 이 되었는지 출력해보자
 			System.out.println(strikeCount + "S " + ballCount + "B 입니다.");
 			
-//			만약에 3S라면 정답을 맞춘 상황, 추가적인 입력을 받을 필요 없음 => while 반복문 깨고 나가서 프로그램 종료시키자
 			if(strikeCount == 3) {
 				System.out.println("축하합니다! 정답이에요~");
 				System.out.println(tryCount + "번 만에 푸셨습니다!");
