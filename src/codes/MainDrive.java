@@ -44,6 +44,41 @@ public class MainDrive {
 //			2번칸 : ex) 123을 쳤다면 => 3이 들어가야함. 어떻게? 입력값 / 10 한 값
 			inputNumbers[2] = inputNum % 10;
 			
+//			내가 입력한 숫자는 i가 담당을 하고 ( 덜 바쁜 반복 ) 
+//			문제 숫자는 j가 담당을 한다 ( 바쁜 반복 ) => for 중첩
+			
+			for(int i = 0 ; i < inputNumbers.length ; i++) {
+				
+				for(int j = 0; j < questionNumbers.length ; j++) {
+					
+//					먼저 검사 : 내 숫자 == 문제의 숫자 ?  -> 배열 안에 적힌 숫자끼리 같은가?
+//					== 면 추가 검사 -> 둘의 위치도 ==?
+//					if문 중첩을 해야한다!!
+					
+//					중간 테스트
+//					System.out.println("내 숫자 : " + inputNumbers[i] + ", 문제 숫자 : " + questionNumbers[j]);
+					
+					if(inputNumbers[i] == questionNumbers[j]) {
+						
+//						추가 질문 : S / B = > 둘의 위치가 같은 가 다른가 질문해야한다 => i와 j가 같은가 다른가에 대한 질문을 해야한다는 뜻
+						if( i == j) {
+//							숫자도 같고, 위치도 같은 상황 => S 하나 발견
+						}
+						else {
+//							숫자는 같지만, 위치만 다른 상황 => B 하나 발견
+						}
+						
+					}
+					
+					
+					
+				}
+			}
+			
+			
+			
+			
+			
 		}
 		
 	}
