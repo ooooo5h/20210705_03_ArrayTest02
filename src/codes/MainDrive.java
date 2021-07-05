@@ -44,6 +44,10 @@ public class MainDrive {
 //			2번칸 : ex) 123을 쳤다면 => 3이 들어가야함. 어떻게? 입력값 / 10 한 값
 			inputNumbers[2] = inputNum % 10;
 			
+//			검사를 하기 전에, S / B 의 갯수를 기록할 변수를 만들자
+			int strikeCount = 0;
+			int ballCount = 0;			
+			
 //			내가 입력한 숫자는 i가 담당을 하고 ( 덜 바쁜 반복 ) 
 //			문제 숫자는 j가 담당을 한다 ( 바쁜 반복 ) => for 중첩
 			
@@ -63,9 +67,11 @@ public class MainDrive {
 //						추가 질문 : S / B = > 둘의 위치가 같은 가 다른가 질문해야한다 => i와 j가 같은가 다른가에 대한 질문을 해야한다는 뜻
 						if( i == j) {
 //							숫자도 같고, 위치도 같은 상황 => S 하나 발견
+							strikeCount++;
 						}
 						else {
 //							숫자는 같지만, 위치만 다른 상황 => B 하나 발견
+							ballCount++;
 						}
 						
 					}
@@ -74,6 +80,9 @@ public class MainDrive {
 					
 				}
 			}
+			
+//			?S ?B 이 되었는지 출력해보자
+			System.out.println(strikeCount + "S " + ballCount + "B 입니다.");
 			
 			
 			
